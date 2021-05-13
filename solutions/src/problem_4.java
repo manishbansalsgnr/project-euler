@@ -1,27 +1,39 @@
+import java.util.*;
+
 public class problem_4 {
 
     // https://projecteuler.net/problem=4
 
     public static void main(String args[]) {
-        long num = 600851475143L;
-        long product = 1;
-        boolean x= isPrime(4);
-        for(long i = 2 ; i<num ; i++) {
-            if(num%i == 0 && isPrime(i)) {
-                product *= i;
-            }
-            if(product == num) {
-                System.out.println(i);
-                break;
-            }
-        }
-    }
-    private static boolean isPrime(long num) {
-        for(long i = 2 ; i<num ; i++) {
-            if (num % i == 0) {
-                return false;
+        Long product = 1L;
+        Long max = 1L;
+        List<Long> listPalindrome = new ArrayList<>();
+
+        for(Long i = 999L ; i>100 ; i--) {
+            for(Long j = 999L ; j>100 ; j--) {
+                product = i*j;
+                if(isPalindrome(product) && max<product) {
+                    max = product;
+                }
             }
         }
-        return true;
+        
+        System.out.println(max);
     }
+
+    private static boolean isPalindrome(Long num) {
+        Long reverseNum = 0L;
+        Long temp = num;
+        Long r=0L;
+        while(temp>0) {
+            r = temp%10;
+            reverseNum = reverseNum*10 + r;
+            temp /= 10;
+        }
+        if(reverseNum.equals(num)) {
+            return true;
+        }
+        return false;
+    }
+
 }
