@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class problem_5 {
 
     // https://projecteuler.net/problem=5
